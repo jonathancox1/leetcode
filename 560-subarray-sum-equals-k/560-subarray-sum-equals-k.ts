@@ -1,9 +1,8 @@
 function subarraySum(nums: number[], k: number): number {
-    const map = new Map();
+    const map = new Map(); // sum, [index] where index represents the diff
     map.set(0, [-1]);
     
     let count = 0;
-    
     let sum = 0;
     
     for (let x = 0; x < nums.length; x++) {
@@ -12,18 +11,15 @@ function subarraySum(nums: number[], k: number): number {
         const diff = sum - k;
         
         if (map.has(diff)) {
-            
             count += map.get(diff).length;
-            
         }
         
         if (!map.has(sum)) {
-            
             map.set(sum, []);
         }
         
-        map.get(sum).push(x);            
-
+        map.get(sum).push(x);   
+        
     }
     
     return count;
