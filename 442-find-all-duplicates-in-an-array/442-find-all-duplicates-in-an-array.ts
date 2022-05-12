@@ -4,6 +4,7 @@ function findDuplicates(nums: number[]): number[] {
     let ans = [];
     
     for (let x = 0; x < nums.length; x++) {
+        
         if (nums[x] === nums[x + 1]) ans.push(nums[x]);
     }
     
