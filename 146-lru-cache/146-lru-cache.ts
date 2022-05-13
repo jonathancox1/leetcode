@@ -1,60 +1,32 @@
 class LRUCache {
     constructor(capacity: number) {
         this.map = new Map();
-        this.queue = new Array(capacity);
         this.cap = capacity;
     }
     
-    queue;
     map;
     cap;
-    
-    updateLRC(key: number): void {
-        let isInQueue = this.queue.indexOf(key);
-        
-        // in queue && not most recently used
-        if (isInQueue !== -1 && isInQueue !== this.cap - 1) {
-            
-            // move it to end
-            this.queue.splice(isInQueue, 1);
-            this.queue.push(key);
-        }
-        
-        // not in queue
-        if (isInQueue === -1) {
-                  
-            this.queue.push(key)
-
-            if (this.queue.length > this.cap) {
-                
-                // evict LRU key
-                let evict = this.queue.shift();
-                this.map.delete(evict);
-            }  
-        }
-        
-    }
 
     get(key: number): number {
         
-        let isValid = this.map.get(key);
+        if (!this.map.has(key)) return - 1;
         
-        if (isValid !== undefined) {
-            
-            this.updateLRC(key);
-            return isValid;
-        }
+        let value = this.map.get(key);
         
-        return -1;
+        this.map.delete(key);
         
+        this.map.set(key, value);
+        
+        return value;
     }
 
     put(key: number, value: number): void {
         
-        this.updateLRC(key);
-        
+        if (this.map.has(key)) this.map.delete(key);
+
         this.map.set(key, value);
         
+        if (this.map.size > this.cap) this.map.delete(this.map.keys().next().value)
     }
 }
 
