@@ -13,21 +13,22 @@ class LRUCache {
         let isInQueue = this.queue.indexOf(key);
         
         // in queue && not most recently used
-        if (isInQueue !== -1) {
+        if (isInQueue !== -1 && isInQueue !== this.cap - 1) {
             
             // move it to end
             this.queue.splice(isInQueue, 1);
             this.queue.push(key);
         }
         
+        // not in queue
         if (isInQueue === -1) {
                   
             this.queue.push(key)
 
             if (this.queue.length > this.cap) {
+                
                 // evict LRU key
                 let evict = this.queue.shift();
-
                 this.map.delete(evict);
             }  
         }
