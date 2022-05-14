@@ -1,5 +1,6 @@
 function rob(nums: number[]): number {
-    if (nums.length <= 2) return Math.max(...nums);
+    if (nums.length === 1) return nums[0];
+    if (nums.length === 2) return Math.max(...nums);
     
     let max = Array(nums.length).fill(0);
     
