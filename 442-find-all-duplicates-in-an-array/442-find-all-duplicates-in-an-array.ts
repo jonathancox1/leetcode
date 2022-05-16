@@ -1,12 +1,16 @@
 function findDuplicates(nums: number[]): number[] {
+    let arr = [];
+    
     nums.sort((a, b) => a - b);
     
-    let ans = [];
-    
-    for (let x = 0; x < nums.length; x++) {
+    for (let i = 0; i < nums.length; i++) {
         
-        if (nums[x] === nums[x + 1]) ans.push(nums[x]);
+        let curr = nums[i];
+        let next = nums[i + 1];
+        
+        if (curr === next) arr.push(curr);
+        
     }
     
-    return ans;
+    return arr;
 };
