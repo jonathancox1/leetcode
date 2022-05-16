@@ -5,15 +5,15 @@ function longestCommonPrefix(strs: string[]): string {
     
     const firstLength = strs[0].length;
     
-    for (let x = 0; x < firstLength; x++) {
-        const currChar = strs[0][x];
+    for (let i = 0; i < firstLength; i++) {
         
-        // compare index X to each of word
-        for (let y = 1; y < strs.length; y++) {
+        let currChar = strs[0][i];
+        
+        for (let j = 1; j < strs.length; j++) {   
             
-            if (currChar !== strs[y][x]) return prefix;
+            if (currChar !== strs[j][i]) return prefix;
         }
-                    
+        
         prefix += currChar;
         
     }
