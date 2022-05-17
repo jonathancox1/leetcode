@@ -34,7 +34,7 @@ function getIntersectionNode(headA: ListNode | null, headB: ListNode | null): Li
     for (let i = headB; i != null; i = i.next) lenB++;
 
 //     let longerList = lenA > lenB ? headA : headB;
-//     let shorterList = lenA < lenB ? headA : headB;
+//     let shorterList = lenA > lenB ? headB : headB;
     
 //     let diff = Math.abs(lenA - lenB);
     
