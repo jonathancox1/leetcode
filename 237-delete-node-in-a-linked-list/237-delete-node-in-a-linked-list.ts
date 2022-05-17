@@ -16,6 +16,8 @@
 function deleteNode(root: ListNode | null): void {
     if (!root) return;
     
+    // instead of 'deleting' the node
+    // reassign the current node to the contents of the next node
     root.val = root.next.val;
     root.next = root.next.next;
 };
