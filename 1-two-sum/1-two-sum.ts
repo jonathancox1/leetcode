@@ -1,13 +1,15 @@
 function twoSum(nums: number[], target: number): number[] {
-    
-    for (let x = 0; x < nums.length; x++) {
+
+    for (let i = 0; i < nums.length; i++) {
         
-        const diff = target - nums[x];
+        const diff = target - nums[i];
         
-        for (let y = x + 1; y < nums.length; y++) {
+        for (let j = i + 1; j < nums.length; j++) {
             
-            if (nums[y] === diff) return [x, y];
+            if (diff === nums[j]) return [i, j];
             
         }
+        
     }
+    
 };
